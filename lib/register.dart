@@ -4,17 +4,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-  
     options: DefaultFirebaseOptions.currentPlatform,
-);}
-
+  );
+}
 
 class MyRegister extends StatelessWidget {
-  const MyRegister({Key? key}) : super(key: key);
+  const MyRegister({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +27,7 @@ class MyRegister extends StatelessWidget {
 }
 
 class RegistrationPage extends StatefulWidget {
-  const RegistrationPage({Key? key}) : super(key: key);
+  const RegistrationPage({super.key});
 
   @override
   _RegistrationPageState createState() => _RegistrationPageState();
@@ -43,7 +41,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
   String? _gender;
-  String? _role = 'User'; // Default role is User
+  final String? _role = 'User'; // Default role is User
 
   // Firebase Authentication instance
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -55,7 +53,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
     if (_formKey.currentState!.validate()) {
       try {
         // Register the user with Firebase Authentication
-        UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+        UserCredential userCredential =
+            await _auth.createUserWithEmailAndPassword(
           email: _emailController.text,
           password: _passwordController.text,
         );
@@ -75,27 +74,30 @@ class _RegistrationPageState extends State<RegistrationPage> {
         });
 
         // Show success message and navigate
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Registration Successful')));
-        
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Registration Successful')));
+
         // Navigate to home page or login screen
         // Example: Navigator.pushReplacementNamed(context, '/home');
       } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $e')));
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Error: $e')));
       }
     }
   }
 
-
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(  // Add ScrollView here
+      body: SingleChildScrollView(
+        // Add ScrollView here
         child: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color.fromARGB(255, 250, 218, 221 ), Color.fromARGB(255, 223, 246, 255 ),Color.fromARGB(255,255, 248, 225)],
+              colors: [
+                Color.fromARGB(255, 250, 218, 221),
+                Color.fromARGB(255, 197, 234, 248),
+              ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -114,7 +116,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   double padding = screenWidth < 400 ? 12 : 16;
 
                   return Card(
-                    color: Colors.white.withOpacity(0.8), // Semi-transparent white background
+                    color: Colors.white
+                        .withOpacity(0.8), // Semi-transparent white background
                     elevation: 10,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
@@ -129,9 +132,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             Text(
                               'Register',
                               style: TextStyle(
-                                fontSize: fontSize + 12, // Adjusting font size for larger screens
+                                fontSize: fontSize +
+                                    12, // Adjusting font size for larger screens
                                 fontWeight: FontWeight.bold,
-                                color: Colors.orange,
+                                color: Color.fromARGB(255, 74, 74, 74),
                               ),
                             ),
                             const SizedBox(height: 20),
@@ -154,7 +158,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               validator: (value) {
                                 if (value == null ||
                                     value.isEmpty ||
-                                    !RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                                    !RegExp(r'^[^@]+@[^@]+\.[^@]+')
+                                        .hasMatch(value)) {
                                   return 'Please enter a valid email';
                                 }
                                 return null;
@@ -203,8 +208,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             ElevatedButton(
                               onPressed: _register,
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.orange,
-                                padding: EdgeInsets.symmetric(vertical: screenWidth < 400 ? 12 : 15),
+                                backgroundColor:
+                                    Color.fromARGB(255, 255, 202, 177),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: screenWidth < 400 ? 12 : 15),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
@@ -212,21 +219,22 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               ),
                               child: Text(
                                 'Register',
-                                style: TextStyle(fontSize: fontSize, color: Colors.white),
+                                style: TextStyle(
+                                    fontSize: fontSize, color: Colors.white),
                               ),
                             ),
                             const SizedBox(height: 10),
                             TextButton(
                               onPressed: () {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(content: Text('Navigating to Login...')),
+                                  const SnackBar(
+                                      content: Text('Navigating to Login...')),
                                 );
-                                
                               },
                               child: const Text(
                                 'Already have an account? Login',
                                 style: TextStyle(
-                                  color: Colors.orange,
+                                  // color: Colors.orange,
                                   fontSize: 16,
                                 ),
                               ),
@@ -260,7 +268,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        prefixIcon: Icon(icon, color: Colors.orange),
+        prefixIcon: Icon(
+          icon,
+          color: Color.fromARGB(255, 81, 116, 131),
+        ),
       ),
       validator: validator,
     );

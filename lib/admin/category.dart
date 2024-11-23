@@ -17,7 +17,7 @@ class MyCategoryApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: MyCategory(),
     );
   }
@@ -39,7 +39,7 @@ class _MyCategoryState extends State<MyCategory> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('MyCategory'),
+          title: const Text('MyCategory'),
         ),
         // drawer: sidebar(userName: userName),
         body:Container(
@@ -47,7 +47,7 @@ class _MyCategoryState extends State<MyCategory> {
             children: [
               TextFormField(
                 controller: _categoryController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   label: Text('categoryname'),
                 ),
               ),
@@ -74,7 +74,7 @@ class _MyCategoryState extends State<MyCategory> {
                 catch(err) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $err')));
                 }
-              }, child: Text('Add')),
+              }, child: const Text('Add')),
               Expanded(
                 child: StreamBuilder(
                   stream: db.collection('categories').snapshots(),

@@ -3,7 +3,7 @@ import 'package:babyshophub/admin/admin.dart';
 import 'category.dart';
 class sidebar extends StatelessWidget {
   final String userName; 
-  const sidebar({Key? key, required this.userName}) : super(key: key);
+  const sidebar({super.key, required this.userName});
   @override
   Widget build(BuildContext context) {
     return  Drawer(
@@ -53,7 +53,7 @@ class sidebar extends StatelessWidget {
               Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => MyCategoryApp(), // Pass userName
+            builder: (context) => const MyCategoryApp(), // Pass userName
           ),
         );
             },

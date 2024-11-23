@@ -1,4 +1,3 @@
-
 import 'package:babyshophub/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -8,17 +7,17 @@ import 'login.dart';
 Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
+  );
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, 
+      debugShowCheckedModeBanner: false,
       title: 'E-Commerce Admin',
       theme: ThemeData(
         primarySwatch: Colors.orange,
@@ -29,20 +28,21 @@ class MyApp extends StatelessWidget {
 }
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
-    
+
     // Initialize the animation controller
     _controller = AnimationController(
       duration: const Duration(seconds: 2),
@@ -69,20 +69,33 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 245, 222, 23), // Set the background color to orange
-      body: Center(
+        // backgroundColor: const Color.fromARGB(
+        //     255, 255, 248, 225), // Set the background color to orange
+        body: Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color.fromARGB(255, 250, 218, 221),
+            Color.fromARGB(255, 197, 234, 248),
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ScaleTransition(
               scale: _animation, // Use ScaleTransition for animation
-              child: Image.asset('../assets/logo.png', width: 100, height: 100), // Replace with your logo
+              child: Image.asset('../assets/logo.png',
+                  width: 100, height: 100), // Replace with your logo
             ),
             const SizedBox(height: 20),
             const Text(
-              'E-Commerce ',
+              'Baby Shop hub ',
               style: TextStyle(
-                color: Colors.white,
+                color: Color.fromARGB(255, 74, 74, 74),
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
@@ -90,12 +103,12 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
           ],
         ),
       ),
-    );
+    ));
   }
 }
 
 class AdminPanel extends StatelessWidget {
-  const AdminPanel({Key? key}) : super(key: key);
+  const AdminPanel({super.key});
 
   @override
   Widget build(BuildContext context) {

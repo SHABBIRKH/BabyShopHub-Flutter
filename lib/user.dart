@@ -4,7 +4,7 @@ class userPage extends StatelessWidget {
   final String userName;
 
   // Constructor to accept userName as a named parameter
-  const userPage({Key? key, required this.userName}) : super(key: key);
+  const userPage({super.key, required this.userName});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,15 @@ class userPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.admin_panel_settings, size: 100, color: Colors.orange),
+            const Icon(Icons.admin_panel_settings,
+                size: 100, color: Colors.orange),
             const SizedBox(height: 20),
             Text(
               'Welcome, user $userName',
-              style: TextStyle(fontSize: 32, color: Colors.orange),
+              style: const TextStyle(
+                fontSize: 32,
+                color: Color.fromARGB(255, 74, 74, 74),
+              ),
             ),
           ],
         ),
