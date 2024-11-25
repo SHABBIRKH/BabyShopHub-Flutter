@@ -100,13 +100,24 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        // backgroundColor:
+        appBar: AppBar(
+          title: Center(
+            child: Image.asset(
+              '../assets/2.png',
+              fit: BoxFit.contain,
+              height: 600,
+              width: 60,
+            ),
+          ),
+        ),
         body: Container(
+            margin: EdgeInsets.only(bottom: 250),
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [
                   Color.fromARGB(255, 250, 218, 221),
-                              Color.fromARGB(255, 197, 234, 248),
-
+                  Color.fromARGB(255, 197, 234, 248),
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -116,12 +127,11 @@ class _LoginPageState extends State<LoginPage> {
                 child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Card(
-                color: const Color.fromARGB(243, 246, 245, 245)
-                    .withOpacity(0.8), // Semi-transparent white background
-                elevation: 10,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
+                // color: const Color.fromRGBO(
+                //     0, 0, 0, 0), // Semi-transparent white background
+                color:
+                    const Color.fromRGBO(255, 255, 255, 0.822).withOpacity(0.0),
+
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Form(
@@ -143,14 +153,14 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: InputDecoration(
                             labelText: 'Username',
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide:
-                                  const BorderSide(color: Colors.orangeAccent),
+                              borderRadius: BorderRadius.circular(11),
+                              borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 64, 137, 255)),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide:
-                                  const BorderSide(color: Colors.orange),
+                              borderRadius: BorderRadius.circular(11),
+                              borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 64, 137, 255)),
                             ),
                             prefixIcon: const Icon(
                               Icons.person,
@@ -171,14 +181,14 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: InputDecoration(
                             labelText: 'Password',
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide:
-                                  const BorderSide(color: Colors.orangeAccent),
+                              borderRadius: BorderRadius.circular(11),
+                              borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 64, 137, 255)),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide:
-                                  const BorderSide(color: Colors.orange),
+                              borderRadius: BorderRadius.circular(11),
+                              borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 0, 149, 255)),
                             ),
                             prefixIcon: const Icon(
                               Icons.lock,
@@ -202,21 +212,22 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         const SizedBox(height: 20),
                         ElevatedButton(
-                          onPressed: _login,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromARGB(
-                                255, 255, 202, 177), // Button color
-                            padding: const EdgeInsets.symmetric(vertical: 15),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
+                            onPressed: _login,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromARGB(
+                                  255, 0, 170, 255), // Button color
+                              padding: const EdgeInsets.symmetric(vertical: 15),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(11),
+                              ),
+                              elevation: 5, // Shadow effect
                             ),
-                            elevation: 5, // Shadow effect
-                          ),
-                          child: const Text(
-                            'Login',
-                            style: TextStyle(fontSize: 18, color: Colors.white),
-                          ),
-                        ),
+                            child: const Text(
+                              'Login',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromRGBO(255, 255, 255, 1)),
+                            )),
                         const SizedBox(height: 10),
                         TextButton(
                           onPressed: () {
